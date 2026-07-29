@@ -16,8 +16,11 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: ghcr.io/gareth0712/gitops-demo-app:0.1.0
+          image: demo-app
           imagePullPolicy: IfNotPresent
+          envFrom:
+            - configMapRef:
+                name: demo-app-config
           ports:
             - containerPort: 3000
           resources:
@@ -25,5 +28,5 @@ spec:
               memory: "32Mi"
               cpu: "10m"
             limits:
-              memory: "64Mi"
+              memory: "128Mi"
               cpu: "100m"
